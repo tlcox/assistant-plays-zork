@@ -13,6 +13,12 @@ app.listen(port, () => console.log(`Example app listening on port ${port}!`))
 let responses = [];
 let zork;
 
+let clean = function (input) {
+	input = input.replace(/[\r\n\t>]+/g, ' ');
+	input = input.replace('This version created 11-MAR-91.', '\n');
+	return input;
+}
+
 app.get('/', (req, res) => {
 	console.log('repeat');
 	if (!zork) {
@@ -56,7 +62,7 @@ app.get('/startGame', async (req, res) => {
 	}
 	zork = spawn('./zork');
 	zork.stdout.on('data', (data) => {
-		responses.push(data.toString());
+		responses.push(clean(data.toString()));
 	});
 
 	await delay(20);
