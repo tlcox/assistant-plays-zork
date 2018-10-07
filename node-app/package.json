@@ -4,7 +4,7 @@
 	"description": "",
 	"main": "app.js",
 	"scripts": {
-		"make-zork": "git clone https://github.com/devshane/zork.git && cd zork && make && cd ..",
+		"make-zork": "git clone https://github.com/devshane/zork.git || cd zork && make && cd ..",
 		"start-app": "node app.js",
 		"start": "npm run make-zork && npm run start-app",
 		"test": "echo \"Error: no test specified\" && exit 1"
