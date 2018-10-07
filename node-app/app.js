@@ -3,6 +3,9 @@ const body_parser = require('body-parser');
 const spawn = require('child_process').spawn;
 const app = express();
 const port = 8000;
+const cors = require('cors');
+
+app.use(cors());
 
 app.use(body_parser.json());
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
