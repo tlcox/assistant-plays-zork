@@ -45,6 +45,6 @@ app.get('/startGame', (req, res) => {
 		response = {
 			message: responses[responses.length - 1]
 		};
-		res.json(JSON.stringify(response));
+		res.json(response);
 	}, 10);
 });
