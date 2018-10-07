@@ -60,4 +60,5 @@ typings/
 # next.js build output
 .next
 
-zork_bin/zork
+zork
+*.o

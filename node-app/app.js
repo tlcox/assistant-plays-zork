@@ -3,6 +3,9 @@ const body_parser = require('body-parser');
 const spawn = require('child_process').spawn;
 const app = express();
 const port = 8000;
+const cors = require('cors');
+
+app.use(cors());
 
 app.use(body_parser.json());
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
@@ -15,7 +18,7 @@ app.get('/', (req, res) => {
 	response = {
 		message: responses[responses.length - 1]
 	};
-	res.send(JSON.stringify(response));
+	res.json(response);
 });
 
 app.post('/', (req, res) => {
@@ -32,12 +35,16 @@ app.post('/', (req, res) => {
 });
 
 app.get('/startGame', (req, res) => {
-	if (zork) {
-
-	}
+	console.log('new game');
 	zork = spawn('./zork');
 	zork.stdout.on('data', (data) => {
 		responses.push(data.toString());
 	});
-	res.send(JSON.stringify('game started'));
+
+	setTimeout(function () {
+		response = {
+			message: responses[responses.length - 1]
+		};
+		res.json(JSON.stringify(response));
+	}, 10);
 });
