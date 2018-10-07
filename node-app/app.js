@@ -35,12 +35,16 @@ app.post('/', (req, res) => {
 });
 
 app.get('/startGame', (req, res) => {
-	if (zork) {
 
-	}
 	zork = spawn('./zork');
 	zork.stdout.on('data', (data) => {
 		responses.push(data.toString());
 	});
-	res.send(JSON.stringify('game started'));
+
+	setTimeout(function () {
+		response = {
+			message: responses[responses.length - 1]
+		};
+		res.json(response);
+	}, 10);
 });
