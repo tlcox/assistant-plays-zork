@@ -10,7 +10,7 @@ app.use(cors());
 app.use(body_parser.json());
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
 
-let responses = [];
+let responses;
 let zork;
 
 let clean = function (input) {
@@ -63,6 +63,7 @@ app.get('/startGame', async (req, res) => {
 	zork = spawn('./zork', {
 		cwd: './zork'
 	});
+	responses = [];
 	zork.stdout.on('data', (data) => {
 		responses.push(clean(data.toString()));
 	});
