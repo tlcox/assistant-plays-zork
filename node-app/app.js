@@ -79,6 +79,7 @@ app.get('/end', async (req, res) => {
 	zork.kill();
 
 	await delay(20);
+	zork = undefined;
 	response = {
 		message: 'Game ended, goodbye.'
 	};
