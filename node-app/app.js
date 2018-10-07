@@ -15,7 +15,7 @@ app.get('/', (req, res) => {
 	response = {
 		message: responses[responses.length - 1]
 	};
-	res.send(JSON.stringify(response));
+	res.json(response);
 });
 
 app.post('/', (req, res) => {
