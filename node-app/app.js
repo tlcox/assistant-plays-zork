@@ -35,7 +35,7 @@ app.post('/', (req, res) => {
 });
 
 app.get('/startGame', (req, res) => {
-
+	console.log('new game');
 	zork = spawn('./zork');
 	zork.stdout.on('data', (data) => {
 		responses.push(data.toString());
