@@ -28,7 +28,7 @@ app.get('/', (req, res) => {
 	res.json(response);
 });
 
-app.post('/', (req, res) => {
+app.post('/', async (req, res) => {
 	console.log('command');
 	if (!zork) {
 		response = {
@@ -67,7 +67,7 @@ app.get('/startGame', async (req, res) => {
 
 });
 
-app.get('/end', (req, res) => {
+app.get('/end', async (req, res) => {
 	console.log('end');
 	if (!zork) {
 		response = {
