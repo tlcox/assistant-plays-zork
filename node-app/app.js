@@ -60,7 +60,9 @@ app.get('/startGame', async (req, res) => {
 		zork.kill();
 		await delay(20);
 	}
-	zork = spawn('./zork');
+	zork = spawn('./zork', {
+		cwd: './zork'
+	});
 	zork.stdout.on('data', (data) => {
 		responses.push(clean(data.toString()));
 	});
